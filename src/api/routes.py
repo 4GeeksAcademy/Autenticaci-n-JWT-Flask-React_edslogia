@@ -5,12 +5,12 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User
 from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
+from flask_jwt_extended import create_access_token
 
 api = Blueprint('api', __name__)
 
 # Allow CORS requests to this API
 CORS(api)
-
   
 
 @api.route('/signup', methods=['POST'])
@@ -39,3 +39,30 @@ def signup():
     except Exception as e:
         db.session.rollback()
         return jsonify({"msg": f"error agregando nuevo usuario a la base de datos: {e}"}), 500
+    
+
+@api.route('/token', methods=['POST'])
+def token():
+    data = request.get_json()
+    fields = ["email", "password", "is_active"]
+
+    for field in fields:
+        if field not in data:
+            return jsonify({"msg": f"Falta el campo: {field}"}, 400)
+    
+    email = data["email"]
+    password = data["password"]
+        
+    user = User.query.filter_by(email=email, password=password).first()
+
+    if user is None:
+        return jsonify({"msg": "email o password incoreccto"}), 401
+    
+    access_token = create_access_token(identity=user.id)
+
+    return jsonify({"msg": "ok", "token": access_token, "user_id": user.id, "email": user.email})
+
+@api.route('/users', methods=['POST'])
+def users():
+    users = User.query.all()
+    return jsonify([user.serialize() for user in users]), 201
