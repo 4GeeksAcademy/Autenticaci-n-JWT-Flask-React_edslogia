@@ -11,12 +11,31 @@ api = Blueprint('api', __name__)
 # Allow CORS requests to this API
 CORS(api)
 
+  
 
-@api.route('/hello', methods=['POST', 'GET'])
-def handle_hello():
+@api.route('/signup', methods=['POST'])
+def signup():
 
-    response_body = {
-        "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
-    }
+    data = request.get_json()
+    fields = ["email", "password", "is_active"]
 
-    return jsonify(response_body), 200
+    print(fields)
+
+    for field in fields:
+        if field not in data:
+            return jsonify({"msg": f"Falta el campo: {field}"}, 400)
+
+    try:
+        newUser = User (
+            email = data["email"],
+            password = data["password"],
+            is_active = data["is_active"]
+        )
+        db.session.add(newUser)
+        db.session.commit()
+
+        return jsonify({"msg": "usuario creado exitosamente"}), 201
+
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"msg": f"error agregando nuevo usuario a la base de datos: {e}"}), 500
