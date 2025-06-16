@@ -17,11 +17,9 @@ CORS(api)
 def signup():
 
     data = request.get_json()
-    fields = ["email", "password", "is_active"]
+    required_fields = ["email", "password", "is_active"]
 
-    print(fields)
-
-    for field in fields:
+    for field in required_fields:
         if field not in data:
             return jsonify({"msg": f"Falta el campo: {field}"}, 400)
 
