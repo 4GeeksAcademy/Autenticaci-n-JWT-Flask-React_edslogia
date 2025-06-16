@@ -13,7 +13,7 @@ export const Login = () => {
 
     e.preventDefault();
     try {
-      const reps = await fetch(`https://musical-broccoli-xj9xx66ggvq26x4v-3001.app.github.dev/api/signup`,
+      const reps = await fetch(`https://musical-broccoli-xj9xx66ggvq26x4v-3001.app.github.dev/api/token`,
         {
           method: "POST",
           headers: {
@@ -31,6 +31,10 @@ export const Login = () => {
       }else {
         console.log("Error registrando")
       }
+
+      const data = await reps.json();
+      const token = data.token;
+      localStorage.setItem("token", token)
 
     } catch (error) {
       console.error("Error en la solicitud: ", error)
