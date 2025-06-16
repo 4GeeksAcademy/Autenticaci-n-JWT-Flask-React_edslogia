@@ -70,12 +70,13 @@ export const Login = () => {
           <input type="text" name="password" className="form-control" aria-describedby="passwordHelp" value={password} onChange={handleInputPassword}></input>
           <div id="passwordHelp" className="form-text">Escribe tu contraseña registrada</div>
         </div>
-        <button className="btn btn-primary mb-3" onClick={handleLogin}>Enviar</button>
+        <button className="btn btn-success mb-3" onClick={handleLogin}>Enviar</button>
       </form>
-
-      <Link to="/">
-        <button className="btn btn-primary">Atrás</button>
-      </Link>
+      <div className="border-top border-warning pt-3">
+        <Link to="/">
+          <button className="btn btn-primary">Atrás</button>
+        </Link>
+      </div>
     </div>
   );
 };
