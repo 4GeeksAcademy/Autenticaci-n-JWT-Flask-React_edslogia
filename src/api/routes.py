@@ -71,4 +71,4 @@ def private_route():
     current_user_id = get_jwt_identity()
     user = User.query.get(current_user_id)
 
-    return jsonify({"user_id": user.id, "email": user.email})
+    return jsonify({"user_id": user.id, "email": user.email}), 201
