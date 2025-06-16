@@ -1,11 +1,12 @@
 // Import necessary components from react-router-dom and other parts of the application.
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer";  // Custom hook for accessing the global state.
 import { useEffect, useState } from "react"
 
 export const Login = () => {
   // Access the global state and dispatch function using the useGlobalReducer hook.
   const { store, dispatch } = useGlobalReducer();
+  const navigate = useNavigate();
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
@@ -25,18 +26,21 @@ export const Login = () => {
             is_active: true
           })
         })
-      
-      if (reps.ok){
-        console.log("Inicio de sesión éxitosa")
-      }else {
-        console.log("Error registrando")
+
+      if (reps.ok) {
+        console.log("Inicio de sesión éxitosa");
+
+        const data = await reps.json();
+        dispatch({ type: "login_data", payload: { email: data.email, jwt_token: data.token } });
+
+        navigate("/dashboard");
+
+      } else {
+        console.log("Error iniciando sesión");
       }
 
-      const data = await reps.json();
-      dispatch({type: "login_data", payload: {email: data.email, jwt_token: data.token}})
-
     } catch (error) {
-      console.error("Error en la solicitud: ", error)
+      console.error("Error en la solicitud: ", error);
     }
   }
 
