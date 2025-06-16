@@ -27,14 +27,13 @@ export const Login = () => {
         })
       
       if (reps.ok){
-        console.log("Registro éxitoso")
+        console.log("Inicio de sesión éxitosa")
       }else {
         console.log("Error registrando")
       }
 
       const data = await reps.json();
-      const token = data.token;
-      localStorage.setItem("token", token)
+      dispatch({type: "login_data", payload: {email: data.email, jwt_token: data.token}})
 
     } catch (error) {
       console.error("Error en la solicitud: ", error)
