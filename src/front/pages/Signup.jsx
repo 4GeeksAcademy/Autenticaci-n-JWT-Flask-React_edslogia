@@ -50,7 +50,7 @@ export const Signup = () => {
 
   return (
     <div className="container">
-
+      <h1 className="text-center" >Signup</h1>
       <form>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">Nuevo correo</label>
@@ -62,11 +62,11 @@ export const Signup = () => {
           <input type="text" name="password" className="form-control" aria-describedby="passwordHelp" value={password} onChange={handleInputPassword}></input>
           <div id="passwordHelp" className="form-text">Escribe tu contraseña de registro</div>
         </div>
-        <button className="btn btn-primary mb-3" onClick={handleLogin}>Submit</button>
+        <button className="btn btn-primary mb-3" onClick={handleLogin}>Enviar</button>
       </form>
 
       <Link to="/">
-        <button className="btn btn-primary">Back home</button>
+        <button className="btn btn-primary">Atrás</button>
       </Link>
     </div>
   );

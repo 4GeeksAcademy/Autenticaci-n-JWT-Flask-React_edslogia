@@ -56,21 +56,22 @@ export const Login = () => {
     <div className="container">
 
       <form>
+        <h1 className="text-center" >Login</h1>
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">Nuevo correo</label>
+          <label htmlFor="exampleInputEmail1" className="form-label">Ingresar correo</label>
           <input type="email" name="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={handleInputEmail}></input>
-          <div id="emailHelp" className="form-text">Escribe tu email para registrarte</div>
+          <div id="emailHelp" className="form-text">Escribe tu email registrado</div>
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">Nueva contraseña</label>
+          <label htmlFor="exampleInputPassword1" className="form-label">Ingresar contraseña</label>
           <input type="text" name="password" className="form-control" aria-describedby="passwordHelp" value={password} onChange={handleInputPassword}></input>
-          <div id="passwordHelp" className="form-text">Escribe tu contraseña de registro</div>
+          <div id="passwordHelp" className="form-text">Escribe tu contraseña registrada</div>
         </div>
-        <button className="btn btn-primary mb-3" onClick={handleLogin}>Submit</button>
+        <button className="btn btn-primary mb-3" onClick={handleLogin}>Enviar</button>
       </form>
 
       <Link to="/">
-        <button className="btn btn-primary">Back home</button>
+        <button className="btn btn-primary">Atrás</button>
       </Link>
     </div>
   );
