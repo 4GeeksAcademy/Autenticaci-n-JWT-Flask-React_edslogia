@@ -55,7 +55,6 @@ export const Signup = () => {
 
   return (
     <div className="container">
-      <h1 className="text-center" >Signup</h1>
 
       {signupMessage && (
         <div
@@ -66,7 +65,8 @@ export const Signup = () => {
         </div>
       )}
 
-      <form>
+      <form className="w-50 text-center mx-auto p-3 my-5 border border-secondary-subtle rounded">
+        <h1 className="text-center" >Signup</h1>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">Nuevo correo</label>
           <input type="email" name="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={handleInputEmail}></input>
@@ -77,7 +77,7 @@ export const Signup = () => {
           <input type="text" name="password" className="form-control" aria-describedby="passwordHelp" value={password} onChange={handleInputPassword}></input>
           <div id="passwordHelp" className="form-text">Escribe tu contraseña de registro</div>
         </div>
-        <button className="btn btn-primary mb-3" onClick={handleLogin}>Enviar</button>
+        <button className="btn btn-primary mb-3" onClick={handleLogin}>Signup</button>
       </form>
 
       <Link to="/">
