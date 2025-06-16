@@ -8,6 +8,7 @@ export const Signup = () => {
   const { store, dispatch } = useGlobalReducer();
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [signupMessage, setSignupMessage] = useState(null);
 
   const handleLogin = async (e) => {
 
@@ -25,10 +26,14 @@ export const Signup = () => {
             is_active: true
           })
         })
-      
-      if (reps.ok){
+
+      if (reps.ok) {
+        const data = await reps.json();
+        setSignupMessage({ type: "success", text: data.msg || "Registro éxitoso" })
         console.log("Registro éxitoso")
-      }else {
+      } else {
+        const errorData = await reps.json()
+        setSignupMessage({ type: "error", text: errorData.msg || "Error registrando" })
         console.log("Error registrando")
       }
 
@@ -51,6 +56,16 @@ export const Signup = () => {
   return (
     <div className="container">
       <h1 className="text-center" >Signup</h1>
+
+      {signupMessage && (
+        <div
+          className={`alert ${signupMessage.type === "success" ? "alert-success" : "alert-danger"}`}
+          role="alert"
+        >
+          {signupMessage.text}
+        </div>
+      )}
+
       <form>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">Nuevo correo</label>
