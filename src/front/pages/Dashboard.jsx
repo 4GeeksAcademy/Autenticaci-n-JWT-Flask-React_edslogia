@@ -49,15 +49,23 @@ export const Dashboard = () => {
   return (
     <div className="container">
 
-      <h1>ÁREA PRIVADA</h1>
+      <div className="row mb-3">
+        <div className="col text-center">
+          <h1>ÁREA PRIVADA</h1>
+        </div>
+      </div>
 
-      <button className="btn btn-danger" onClick={handleLogout}>
-        Cerrar sesión
-      </button>
+      <div className="row">
+        <div className="col-auto gap-3 d-flex justify-content-start">
+          <Link to="/">
+            <button className="btn btn-primary">Atrás</button>
+          </Link>
+          <button className="btn btn-danger" onClick={handleLogout}>
+            Cerrar sesión
+          </button>
+        </div>
+      </div>
 
-      <Link to="/">
-        <button className="btn btn-primary">Atrás</button>
-      </Link>
     </div>
   );
 };
