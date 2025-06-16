@@ -12,9 +12,9 @@ export const Navbar = () => {
 					<Link to="/signup">
 						<button className="btn btn-primary">Signup</button>
 					</Link>
-					
+
 					<Link to="/login">
-						<button className="btn btn-primary mx-2">Login</button>
+						<button className="btn btn-success mx-2">Login</button>
 					</Link>
 				</div>
 			</div>

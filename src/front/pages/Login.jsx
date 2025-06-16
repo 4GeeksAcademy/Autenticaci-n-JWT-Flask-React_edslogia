@@ -60,12 +60,12 @@ export const Login = () => {
 
       <form className="w-50 text-center mx-auto p-3 my-5 border border-secondary-subtle rounded">
         <h1 className="text-center" >Login</h1>
-        <div className="mb-3">
+        <div className="mb-3 text-start">
           <label htmlFor="exampleInputEmail1" className="form-label">Ingresar correo</label>
           <input type="email" name="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={handleInputEmail}></input>
           <div id="emailHelp" className="form-text">Escribe tu email registrado</div>
         </div>
-        <div className="mb-3">
+        <div className="mb-3 text-start">
           <label htmlFor="exampleInputPassword1" className="form-label">Ingresar contraseña</label>
           <input type="text" name="password" className="form-control" aria-describedby="passwordHelp" value={password} onChange={handleInputPassword}></input>
           <div id="passwordHelp" className="form-text">Escribe tu contraseña registrada</div>

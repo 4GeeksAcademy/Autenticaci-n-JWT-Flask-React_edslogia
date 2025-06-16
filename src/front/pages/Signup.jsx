@@ -67,22 +67,23 @@ export const Signup = () => {
 
       <form className="w-50 text-center mx-auto p-3 my-5 border border-secondary-subtle rounded">
         <h1 className="text-center" >Signup</h1>
-        <div className="mb-3">
+        <div className="mb-3 text-start">
           <label htmlFor="exampleInputEmail1" className="form-label">Nuevo correo</label>
           <input type="email" name="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={handleInputEmail}></input>
           <div id="emailHelp" className="form-text">Escribe tu email para registrarte</div>
         </div>
-        <div className="mb-3">
+        <div className="mb-3 text-start">
           <label htmlFor="exampleInputPassword1" className="form-label">Nueva contraseña</label>
           <input type="text" name="password" className="form-control" aria-describedby="passwordHelp" value={password} onChange={handleInputPassword}></input>
           <div id="passwordHelp" className="form-text">Escribe tu contraseña de registro</div>
         </div>
         <button className="btn btn-primary mb-3" onClick={handleLogin}>Signup</button>
       </form>
-
-      <Link to="/">
-        <button className="btn btn-primary">Atrás</button>
-      </Link>
+      <div className="border-top border-primary pt-3">
+        <Link to="/">
+          <button className="btn btn-primary">Atrás</button>
+        </Link>
+      </div>
     </div>
   );
 };
