@@ -58,7 +58,7 @@ export const Login = () => {
   return (
     <div className="container">
 
-      <form>
+      <form className="w-50 text-center mx-auto p-3 my-5 border border-secondary-subtle rounded">
         <h1 className="text-center" >Login</h1>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">Ingresar correo</label>
@@ -70,9 +70,9 @@ export const Login = () => {
           <input type="text" name="password" className="form-control" aria-describedby="passwordHelp" value={password} onChange={handleInputPassword}></input>
           <div id="passwordHelp" className="form-text">Escribe tu contraseña registrada</div>
         </div>
-        <button className="btn btn-success mb-3" onClick={handleLogin}>Enviar</button>
+        <button className="btn btn-success mb-3" onClick={handleLogin}>Login</button>
       </form>
-      <div className="border-top border-warning pt-3">
+      <div className="border-top border-primary pt-3">
         <Link to="/">
           <button className="btn btn-primary">Atrás</button>
         </Link>
